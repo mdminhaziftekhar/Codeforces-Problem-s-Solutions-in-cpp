@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int a[6][6],k=0,m=0,temp=0,count = 0;
+    //Taking the array as input
+    for(int i=1; i<=5; i++){
+        for(int j=1; j<=5; j++){
+            cin>>a[i][j];
+        }
+    }
+    //searching for 1
+    for(int i=1; i<=5; i++){
+        for(int j=1; j<=5; j++){
+            if(a[i][j]==1){
+                k=i;
+                m=j;
+                break; 
+            }
+        }
+    }
+
+    int g=k; //saving these values for future use
+    int f=m;
+    //checking if it is already a beautiful matrix
+    if(k==3 && m==3){
+        cout<<"0"<<endl;
+    }
+    //We swap the rows and columns below
+    else{
+        while(k!=3){
+            if(k<3){
+                temp = a[k][m];
+                a[k][m] = a[k+1][m];
+                a[k+1][m] = temp;
+                count++;
+                k++;
+            }
+            else if(k>3){
+                temp = a[k][m];
+                a[k][m] = a[k-1][m];
+                a[k-1][m] = temp;
+                count++;
+                k--;
+            }
+        }
+
+        while(f!=3){
+            if(f<3){
+                temp = a[g][f];
+                a[g][f] = a[g][f+1];
+                a[g][f+1] = temp;
+                count++;
+                f++;
+            }
+            else if(f>3){
+                temp = a[g][f];
+                a[g][f] = a[g][f-1];
+                a[g][f-1] = temp;
+                count++;
+                f--;
+            }
+        }
+        cout<<count<<endl;
+    }
+    
+
+    return 0;
+}
