@@ -53,6 +53,7 @@ int main()
         string s;
         cin>>s;
         int l= s.length();
+        //if first and last elements are same then the ans is no
         if(s[0]==s[l-1])
         {
             cout<<"NO\n";
